@@ -22,9 +22,9 @@ namespace Hl7.Fhir.ElementModel
     /// </remarks>
     internal class ScopedNodeToTypedElementAdapter : ITypedElement
     {
-        private readonly IScopedNode _adaptee;
+        private readonly IBaseElementNavigator _adaptee;
 
-        public ScopedNodeToTypedElementAdapter(IScopedNode adaptee)
+        public ScopedNodeToTypedElementAdapter(IBaseElementNavigator adaptee)
         {
             _adaptee = adaptee;
         }
@@ -41,6 +41,7 @@ namespace Hl7.Fhir.ElementModel
 
         public IEnumerable<ITypedElement> Children(string? name = null) =>
             _adaptee.Children(name).Select(n => new ScopedNodeToTypedElementAdapter(n));
+        IEnumerable<IBaseElementNavigator> IBaseElementNavigator.Children(string? name) => Children(name);
     }
 }
 

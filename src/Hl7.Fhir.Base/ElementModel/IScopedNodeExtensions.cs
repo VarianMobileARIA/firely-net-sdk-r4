@@ -24,7 +24,7 @@ namespace Hl7.Fhir.ElementModel
         /// <remarks>Be careful when using this method, the returned <see cref="ITypedElement"/> does not implement
         /// the methods <see cref="ITypedElement.Location"/> and <see cref="ITypedElement.Definition"/>.    
         /// </remarks>
-        public static ITypedElement AsTypedElement(this IScopedNode node) =>
+        public static ITypedElement AsTypedElement(this IBaseElementNavigator node) =>
             node is ITypedElement ite ? ite : new ScopedNodeToTypedElementAdapter(node);
 
         /// <summary>

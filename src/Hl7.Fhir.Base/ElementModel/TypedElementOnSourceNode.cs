@@ -1,3 +1,4 @@
+
 /* 
  * Copyright (c) 2018, Firely (info@fire.ly) and contributors
  * See the file CONTRIBUTORS for details.
@@ -493,9 +494,10 @@ namespace Hl7.Fhir.ElementModel
             else
                 return _source.Annotations(type);
         }
+
+        IEnumerable<IBaseElementNavigator> IBaseElementNavigator.Children(string name) => Children(name);
     }
 
     [Obsolete("This class is used for internal purposes and is subject to change without notice. Don't use.")]
     public delegate object AdditionalStructuralRule(ITypedElement node, IExceptionSource ies, object state);
 }
-

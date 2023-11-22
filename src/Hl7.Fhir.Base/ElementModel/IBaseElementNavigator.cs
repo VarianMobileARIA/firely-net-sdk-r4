@@ -15,15 +15,14 @@ namespace Hl7.Fhir.ElementModel
     /// <summary>
     /// The base interface for <see cref="ITypedElement"/> and <see cref="IScopedNode"/>."/>
     /// </summary>
-    /// <typeparam name="TDerived"></typeparam>
-    public interface IBaseElementNavigator<TDerived> where TDerived : IBaseElementNavigator<TDerived>
+    public interface IBaseElementNavigator
     {
         /// <summary>
         /// Enumerate the child nodes present in the source representation (if any)
         /// </summary>
         /// <param name="name">Return only the children with the given name.</param>
         /// <returns></returns>
-        IEnumerable<TDerived> Children(string? name = null);
+        IEnumerable<IBaseElementNavigator> Children(string? name = null);
 
         /// <summary>
         /// Name of the node, e.g. "active", "value".

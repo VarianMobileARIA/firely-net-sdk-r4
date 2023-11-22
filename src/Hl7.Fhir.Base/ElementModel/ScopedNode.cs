@@ -242,8 +242,8 @@ namespace Hl7.Fhir.ElementModel
         public IEnumerable<ITypedElement> Children(string? name = null) =>
              childrenInternal(name);
 
-        IEnumerable<IScopedNode> IBaseElementNavigator<IScopedNode>.Children(string? name) =>
-             childrenInternal(name);
+        IEnumerable<IBaseElementNavigator> IBaseElementNavigator.Children(string? name) => childrenInternal(name);
+        IEnumerable<IScopedNode> IScopedNode.Children(string? name) => childrenInternal(name);
     }
 }
 

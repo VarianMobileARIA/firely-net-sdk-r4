@@ -110,6 +110,6 @@ namespace Hl7.Fhir.ElementModel
             new List<IElementDefinitionSummary>();
 
         public override string ToString() => Value != null ? PrimitiveTypeConverter.ConvertTo<string>(Value) : "";
-
+        IEnumerable<IBaseElementNavigator> IBaseElementNavigator.Children(string? name) => Children(name);
     }
 }

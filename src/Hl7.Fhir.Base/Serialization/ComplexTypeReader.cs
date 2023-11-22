@@ -37,6 +37,7 @@ namespace Hl7.Fhir.Serialization
         public IElementDefinitionSummary Definition => _wrapped.Definition;
 
         public IEnumerable<ITypedElement> Children(string name = null) => _wrapped.Children(name);
+        IEnumerable<IBaseElementNavigator> IBaseElementNavigator.Children(string name) => Children(name);
     }
 
 #pragma warning disable 612,618

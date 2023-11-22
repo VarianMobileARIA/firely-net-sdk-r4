@@ -210,5 +210,7 @@ namespace Hl7.Fhir.ElementModel
             else
                 return Enumerable.Empty<object>();
         }
+
+        IEnumerable<IBaseElementNavigator> IBaseElementNavigator.Children(string name) => Children(name);
     }
 }

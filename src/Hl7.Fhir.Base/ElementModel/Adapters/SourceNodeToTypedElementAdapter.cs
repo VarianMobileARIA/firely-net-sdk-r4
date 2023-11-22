@@ -48,5 +48,6 @@ namespace Hl7.Fhir.ElementModel.Adapters
             Current.Children(name).Select(c => new SourceNodeToTypedElementAdapter(this, c));
 
         IEnumerable<object> IAnnotated.Annotations(Type type) => Current.Annotations(type);
+        IEnumerable<IBaseElementNavigator> IBaseElementNavigator.Children(string name) => Children(name);
     }
 }

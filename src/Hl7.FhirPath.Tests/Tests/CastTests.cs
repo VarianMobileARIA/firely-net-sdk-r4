@@ -21,11 +21,11 @@ namespace Hl7.FhirPath.Tests
     [TestClass]
     public class CastTests
     {
-        static readonly ITypedElement complex = new ComplexValue();
-        static readonly IEnumerable<ITypedElement> collection = ElementNode.CreateList(4, 5, complex);
-        static readonly IEnumerable<ITypedElement> singleV = ElementNode.CreateList(4L);
-        static readonly IEnumerable<ITypedElement> singleC = ElementNode.CreateList(complex);
-        static readonly IEnumerable<ITypedElement> emptyColl = ElementNode.EmptyList;
+        private static readonly ITypedElement complex = new ComplexValue();
+        private static readonly IEnumerable<ITypedElement> collection = ElementNode.CreateList(4, 5, complex);
+        private static readonly IEnumerable<ITypedElement> singleV = ElementNode.CreateList(4L);
+        private static readonly IEnumerable<ITypedElement> singleC = ElementNode.CreateList(complex);
+        private static readonly IEnumerable<ITypedElement> emptyColl = ElementNode.EmptyList;
 
         [TestMethod]
         public void TestUnbox()
@@ -174,5 +174,6 @@ namespace Hl7.FhirPath.Tests
         public IElementDefinitionSummary Definition => null;
 
         public IEnumerable<ITypedElement> Children(string name = null) => new ITypedElement[0];
+        IEnumerable<IBaseElementNavigator> IBaseElementNavigator.Children(string name) => Children(name);
     }
 }

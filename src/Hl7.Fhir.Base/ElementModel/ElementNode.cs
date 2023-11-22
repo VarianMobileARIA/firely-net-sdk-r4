@@ -296,6 +296,8 @@ namespace Hl7.Fhir.ElementModel
                 : HasAnnotations ? AnnotationsInternal.OfType(type) : Enumerable.Empty<object>();
         }
 
+        IEnumerable<IBaseElementNavigator> IBaseElementNavigator.Children(string name) => Children(name);
+
         public string Location
         {
             get

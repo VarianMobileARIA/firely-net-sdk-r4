@@ -319,12 +319,13 @@ namespace Hl7.Fhir.ElementModel.Tests
 
             public string Location => _wrapped.Location;
 
-            public IElementDefinitionSummary? Definition => null;
+            public IElementDefinitionSummary Definition => null!;
 
             public string? ResourceType => !string.IsNullOrEmpty(InstanceType) && char.IsUpper(InstanceType, 0) ? InstanceType : null;
 
             public IEnumerable<ITypedElement> Children(string? name = null) =>
                 _wrapped.Children(name).Select(c => new TypedElementWithoutDefinition(c));
+            IEnumerable<IBaseElementNavigator> IBaseElementNavigator.Children(string? name) => Children(name);
         }
 
         private class NoTypeProvider : IStructureDefinitionSummaryProvider

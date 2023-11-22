@@ -8,6 +8,8 @@
 
 #nullable enable
 
+using System.Collections.Generic;
+
 namespace Hl7.Fhir.ElementModel
 {
     /// <summary>
@@ -17,8 +19,15 @@ namespace Hl7.Fhir.ElementModel
     /// This interface represents FHIR data as a tree of elements, including type information either present in 
     /// the instance or derived from fully aware of the FHIR definitions and types
     /// </remarks>
-    public interface IScopedNode : IBaseElementNavigator<IScopedNode>
+    public interface IScopedNode : IBaseElementNavigator
     {
+        /// <summary>
+        /// Enumerate the child nodes present in the source representation (if any)
+        /// </summary>
+        /// <param name="name">Return only the children with the given name.</param>
+        /// <returns></returns>
+        new IEnumerable<IScopedNode> Children(string? name = null);
+
         /// <summary>
         /// The parent node of this node, or null if this is the root node.
         /// </summary>

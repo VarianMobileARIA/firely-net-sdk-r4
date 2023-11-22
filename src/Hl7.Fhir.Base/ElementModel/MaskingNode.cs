@@ -167,5 +167,6 @@ namespace Hl7.Fhir.ElementModel
             let inc = included(c)
             where inc.included
             select new MaskingNode(this, c, inc.mandatory);
+        IEnumerable<IBaseElementNavigator> IBaseElementNavigator.Children(string name) => Children(name);
     }
 }

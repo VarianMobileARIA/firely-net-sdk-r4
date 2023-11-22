@@ -1,3 +1,5 @@
+#nullable enable
+
 /* 
  * Copyright (c) 2018, Firely (info@fire.ly) and contributors
  * See the file CONTRIBUTORS for details.
@@ -7,6 +9,7 @@
  */
 
 using Hl7.Fhir.Specification;
+using System.Collections.Generic;
 
 namespace Hl7.Fhir.ElementModel
 {
@@ -18,9 +21,14 @@ namespace Hl7.Fhir.ElementModel
     /// the instance or derived from fully aware of the FHIR definitions and types
     /// </remarks>
 
-    public interface ITypedElement : IBaseElementNavigator<ITypedElement>
+    public interface ITypedElement : IBaseElementNavigator
     {
-
+        /// <summary>
+        /// Enumerate the child nodes present in the source representation (if any)
+        /// </summary>
+        /// <param name="name">Return only the children with the given name.</param>
+        /// <returns></returns>
+        new IEnumerable<ITypedElement> Children(string? name = null);
 
         /// <summary>
         /// An indication of the location of this node within the data represented by the <c>ITypedElement</c>.
@@ -33,3 +41,5 @@ namespace Hl7.Fhir.ElementModel
         IElementDefinitionSummary Definition { get; }
     }
 }
+
+#nullable restore
